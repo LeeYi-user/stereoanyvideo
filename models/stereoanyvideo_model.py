@@ -17,7 +17,7 @@ class StereoAnyVideoModel(Configurable, torch.nn.Module):
         self.mixed_precision = False
         model = StereoAnyVideo(mixed_precision=self.mixed_precision)
 
-        state_dict = torch.load(self.model_weights, map_location="cpu")
+        state_dict = torch.load(self.model_weights, map_location="cpu", weights_only=False)
         if "model" in state_dict:
             state_dict = state_dict["model"]
         if "state_dict" in state_dict:

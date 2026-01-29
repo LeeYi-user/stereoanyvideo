@@ -43,7 +43,7 @@ def demo(args):
             ".pt"
         )
         strict = True
-        state_dict = torch.load(args.ckpt)
+        state_dict = torch.load(args.ckpt, weights_only=False)
         if "model" in state_dict:
             state_dict = state_dict["model"]
         if list(state_dict.keys())[0].startswith("module."):
@@ -150,7 +150,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', default="stereoanyvideo", help="name to specify model")
     parser.add_argument('--ckpt', default=None, help="checkpoint of stereo model")
-    parser.add_argument('--resize', default=(720, 1280), help="image size input to the model")
+    parser.add_argument('--resize', type=int, nargs='+', default=[720, 1280], help="image size input to the model")
     parser.add_argument("--fps", type=int, default=30, help="frame rate for video visualization")
     parser.add_argument('--path', help="dataset for evaluation")
     parser.add_argument("--save_png", action="store_true")
