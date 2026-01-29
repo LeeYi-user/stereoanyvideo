@@ -1,7 +1,7 @@
 hydra-core==1.1
 numpy==1.23.5
 munch==2.5.0
-omegaconf==2.1.0
+omegaconf
 flow_vis==0.1
 einops==0.4.1
 opt_einsum==3.3.0
